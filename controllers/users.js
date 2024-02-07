@@ -101,3 +101,9 @@ module.exports.login = (req, res, next) => {
     })
     .catch(next);
 };
+module.exports.signout = (req, res) => {
+  res.clearCookie('authToken', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+  }).send({ message: 'Вы успешно вышли из системы' });
+};

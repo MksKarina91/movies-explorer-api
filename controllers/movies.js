@@ -9,8 +9,8 @@ const {
 } = require('../errors');
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
-    .populate(['owner'])
+  const ownerId = req.user._id;
+  Movie.find({ owner: ownerId })
     .then((movies) => res.send(movies))
     .catch(next);
 };

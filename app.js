@@ -8,7 +8,7 @@ const { errors } = require('celebrate');
 const router = require('./routes/index');
 
 const auth = require('./middlewares/auth');
-const { login, createUser } = require('./controllers/users');
+const { login, signout, createUser } = require('./controllers/users');
 const { errorHandler } = require('./middlewares/errorHandler');
 const { signinValidation, signupValidation } = require('./middlewares/customValidation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -34,6 +34,7 @@ app.get('/crash-test', () => {
 
 app.post('/signup', signupValidation, createUser);
 app.post('/signin', signinValidation, login);
+app.post('/signout', signout);
 app.use(auth, router);
 
 app.use(errorLogger);
