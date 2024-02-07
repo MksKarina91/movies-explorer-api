@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 const { celebrate, Joi } = require('celebrate');
 
 const RU_REGEX = /^[а-яА-ЯёЁ]/im;

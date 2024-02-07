@@ -1,9 +1,14 @@
-const router = require('express').Router();
+const movieRouter = require('express').Router();
 const { getMovies, createMovie, deleteMovie } = require('../controllers/movies');
 const { movieIdValidation, movieValidation } = require('../middlewares/customValidation');
 
-router.get('/', getMovies);
-router.post('/', movieValidation, createMovie);
-router.delete('/:movieId', movieIdValidation, deleteMovie);
+// Получение списка всех фильмов текущего пользователя
+movieRouter.get('/', getMovies);
 
-module.exports = router;
+// Создание нового фильма с валидацией входящих данных
+movieRouter.post('/', movieValidation, createMovie);
+
+// Удаление фильма по идентификатору с валидацией идентификатора
+movieRouter.delete('/:movieId', movieIdValidation, deleteMovie);
+
+module.exports = movieRouter;
